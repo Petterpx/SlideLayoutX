@@ -316,7 +316,7 @@ class ScrollerViewGroup : ViewGroup, NestedScrollingParent {
             } else if (velocity < 0) {
                 position = if (position == childCount - 1) childCount - 1 else position + 1
             }
-        }else{
+        } else {
             calPosition()
         }
         //触发带监听的滚动的
@@ -389,13 +389,13 @@ class ScrollerViewGroup : ViewGroup, NestedScrollingParent {
     }
 
     /** 添加子View */
-    fun addView(@LayoutRes layoutRes: Int): View {
+    fun <T : View> addView(@LayoutRes layoutRes: Int): T {
         val view = layoutInflater.inflate(
             layoutRes, this, false
-        ) as View
+        )
         addView(view)
         invalidate()
-        return view
+        return view as T
     }
 
     /** 清除资源 */
